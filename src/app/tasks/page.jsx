@@ -10,8 +10,12 @@ import removeTask from "@/lib/remove-task.lib.js";
 
 import styles from "./page.module.css";
 
+import getTokenCookie from "@/utils/get-token-cookie.util.js";
+
 import LogoutButton from "@/components/buttons/logout-button.component.jsx";
 import RemoveButton from "@/components/buttons/remove-task-button.component.jsx";
+
+const tokenValue = await getTokenCookie();
 
 export default function Tasks() {
     const [tasks, setTasks] = useState([]);
@@ -21,8 +25,11 @@ export default function Tasks() {
             try {
                 const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/tasks`, {
                     method: "GET",
-                    headers: { "Content-Type": "application/json" },
-                    credentials: "include"
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Cookie": `token=${tokenValue}`
+                    },
+                    // credentials: "include"
                 });
 
                 const fetchedTasks = await response.json();
