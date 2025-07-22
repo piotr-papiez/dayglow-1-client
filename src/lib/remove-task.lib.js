@@ -1,5 +1,7 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
+
 import getTokenCookie from "@/utils/get-token-cookie.util.js";
 
 export default async function removeTask(taskId) {
@@ -25,6 +27,7 @@ export default async function removeTask(taskId) {
         } else if (response.status === 403) {
             return false;
         } else if (response.status === 200) {
+            revalidatePath("/tasks");
             return true;
         } else {
             return false;
