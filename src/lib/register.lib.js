@@ -37,7 +37,7 @@ export default async function handleSubmit(prevState, formData) {
 
 async function registerUser(user) {
     try {
-        const response = await fetch("http://localhost:3000/api/register", {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/register`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             credentials: "include",

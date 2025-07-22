@@ -41,7 +41,7 @@ export default async function handleSubmit(prevState, formData) {
 
 async function createTask(task, tokenValue) {
     try {
-        const response = await fetch("http://localhost:3000/api/create-task", {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/create-task`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
