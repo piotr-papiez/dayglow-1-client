@@ -1,0 +1,19 @@
+.remove-button {
+    display: flex;
+    align-items: center;
+    aspect-ratio: 1 / 1;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    color: #4e4e4e;
+    font-weight: 400;
+    font-size: 2.8rem;
+    background: none;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .remove-button:hover {
+    color: #121212;
+    background-color: #cbead0;
+  }

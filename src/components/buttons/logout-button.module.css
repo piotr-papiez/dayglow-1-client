@@ -1,0 +1,19 @@
+.logout-button {
+    display: flex;
+    color: #121212;
+    margin-left: auto;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.logout-button:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .logout-button {
+        margin-right: 2rem;
+    }
+}

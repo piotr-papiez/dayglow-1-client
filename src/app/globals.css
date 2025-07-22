@@ -1,0 +1,131 @@
+:root {
+  --background-color: #f1f1f1;
+  --foreground-color: #121212;
+  --tertiary-link-color: #4e4e4e;
+  --border-color: #d1d1d1;
+  --accent-1-color: #03254c;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: inherit;
+  margin: 0;
+}
+
+body {
+  width: 32rem;
+  margin: 2rem auto;
+  color: var(--foreground-color);
+  background-color: var(--background-color);
+}
+
+section {
+  display: grid;
+  margin: auto;
+  width: 24rem;
+  padding: 2rem;
+  gap: 2rem;
+  background-color: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+}
+
+form {
+  display: grid;
+  gap: 1rem;
+}
+
+form input {
+  width: 100%;
+  background-color: #f3f4f5;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  transition: all 0.3s;
+}
+
+form input:hover,
+form input:focus {
+  background-color: #ededed;
+}
+
+form input:focus {
+  outline-color: var(--foreground-color);
+}
+
+form textarea {
+  width: 100%;
+  height: 10rem;
+  background-color: #f3f4f5;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  transition: all 0.3s;
+}
+
+form textarea:hover,
+form textarea:focus {
+  background-color: #ededed;
+}
+
+form textarea:focus {
+  outline-color: var(--foreground-color);
+}
+
+form button {
+  margin-top: 1rem;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  color: #fff;
+  background-color: var(--accent-1-color);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+form button:hover {
+  background-color: var(--foreground-color);
+}
+
+.button-second {
+  margin-top: 0.5rem;
+  border: 1px solid #d1d1d1;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  color: var(--foreground-color);
+  background: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.button-second:hover {
+  background-color: #f5f6f7;
+}
+
+.tertiary-link {
+  margin: 0 auto;
+  font-size: 0.9rem;
+  color: var(--tertiary-link-color);
+  transition: all 0.3s;
+}
+
+.tertiary-link:hover {
+  color: var(--foreground-color);
+}
+
+.related-buttons-container {
+  display: grid;
+}
+
+@media (max-width: 768px) {
+  body {
+    width: initial;
+    margin: 2rem auto;
+  }
+
+  section {
+    top: 50%;
+    margin: 0 2rem;
+    width: initial;
+  }
+}

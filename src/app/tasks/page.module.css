@@ -1,0 +1,86 @@
+.heading {
+  margin: 0 0 1rem 1.5rem;
+}
+
+.section {
+  display: grid;
+  width: 32rem;
+  padding: 0;
+  gap: 0;
+}
+
+.task-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  transition: all 0.3s;
+}
+
+.task-container:first-child {
+  border-radius: 1rem 1rem 0 0;
+}
+
+.task-container:last-child {
+  border-radius: 0 0 1rem 1rem;
+}
+
+.task-container:only-child {
+  border-radius: 1rem;
+}
+
+.task-container:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 2rem;
+  right: 2rem;
+  bottom: 0;
+  height: 1px;
+  background: #d1d1d1;
+  pointer-events: none;
+}
+
+.task-container:hover {
+  background-color: #f5f6f7;
+}
+
+.description-content {
+  font-size: 0.9rem;
+  color: #4e4e4e;
+}
+
+.add-button {
+  display: flex;
+  width: fit-content;
+  margin: 1.5rem;
+  margin-left: auto;
+  text-decoration: none;
+  color: #fff;
+  background-color: #03254c;
+  padding: 1rem;
+  border-radius: 2rem;
+  aspect-ratio: 1 / 1;
+  transition: all 0.3s;
+}
+
+.add-button:hover {
+  background-color: #121212;
+}
+
+@media (max-width: 768px) {
+  .heading {
+    margin: 0 0 1rem 2rem;
+  }
+
+  .section {
+    width: initial;
+    margin: 0 2rem;
+  }
+
+  .add-button {
+    width: fit-content;
+    margin: 1.5rem 3.5rem;
+    margin-left: auto;
+  }
+}
