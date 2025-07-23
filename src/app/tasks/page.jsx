@@ -20,7 +20,7 @@ export default function Tasks() {
         async function fetchTasks() {
             try {
                 const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/tasks`, {
-                    method: "GET",
+                    method: "POST",
                     headers: { "Content-Type": "application/json" },
                     credentials: "include"
                 });
