@@ -10,8 +10,6 @@ import removeTask from "@/lib/remove-task.lib.js";
 
 import styles from "./page.module.css";
 
-import fetchTasks from "@/utils/fetch-tasks.util.js";
-
 import LogoutButton from "@/components/buttons/logout-button.component.jsx";
 import RemoveButton from "@/components/buttons/remove-task-button.component.jsx";
 
@@ -19,6 +17,21 @@ export default function Tasks() {
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
+        async function fetchTasks() {
+            try {
+                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/tasks`, {
+                    method: "GET",
+                    headers: { "Content-Type": "application/json" },
+                    credentials: "include"
+                });
+
+                const fetchedTasks = await response.json();
+                setTasks(fetchedTasks);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
         fetchTasks();
     }, []);
 
