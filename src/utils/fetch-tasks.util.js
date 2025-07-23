@@ -10,9 +10,9 @@ export default async function fetchTasks() {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                "Cookie": `token=${tokenValue}`
+                // "Cookie": `token=${tokenValue}`
             },
-            // credentials: "include"
+            credentials: "include"
         });
 
         const fetchedTasks = await response.json();
