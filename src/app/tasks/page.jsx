@@ -17,6 +17,7 @@ export default function Tasks() {
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
+        console.log(document.cookie);
         async function fetchTasks() {
             try {
                 const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/tasks`, {
