@@ -1,6 +1,6 @@
 "use server";
 
-import { cookies } from "next/headers";
+// import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export default async function handleSubmit(prevState, formData) {
@@ -18,19 +18,26 @@ export default async function handleSubmit(prevState, formData) {
 
     const response = await loginUser(user);
 
-    const tokenHeader = response.headers.get("set-cookie");
+    
 
-    if (tokenHeader) {
-        const [tokenKey, tokenValue] = tokenHeader.split(";")[0].split("=");
-        
-        const cookieStore = await cookies();
+    // const tokenHeader = response.headers.get("set-cookie");
 
-        cookieStore.set(tokenKey, tokenValue, {
-            path: "/",
-            httpOnly: true
-            // More to be added
-        });
+    if (response) {
+        console.log(response);
+        localStorage.setItem("token", response.userId);
     }
+
+    // if (tokenHeader) {
+    //     const [tokenKey, tokenValue] = tokenHeader.split(";")[0].split("=");
+        
+    //     const cookieStore = await cookies();
+
+    //     cookieStore.set(tokenKey, tokenValue, {
+    //         path: "/",
+    //         httpOnly: true
+    //         // More to be added
+    //     });
+    // }
 
     if (response.status === 400 || response.status === 401) {
         inputHints.push("Niewłaściwy login lub hasło");
@@ -48,7 +55,7 @@ async function loginUser(user) {
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/login`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            credentials: "include",
+            // credentials: "include",
             body: JSON.stringify(user)
         });
 
