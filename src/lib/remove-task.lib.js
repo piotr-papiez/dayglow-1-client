@@ -6,7 +6,7 @@ export default async function removeTask(taskId) {
     try {
         const tokenValue = await getTokenCookie();
 
-        const response = await fetch("http://localhost:3000/api/remove-task", {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/remove-task`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
