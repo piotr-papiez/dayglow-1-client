@@ -9,7 +9,6 @@ import SubmitButton from "@/components/buttons/submit-button.component.jsx";
 
 export default function LoginForm() {
     const [actionHints, formAction] = useActionState(handleSubmit, []);
-    console.log(actionHints);
 
     return (
         <section>
@@ -33,7 +32,7 @@ export default function LoginForm() {
                         required
                     />
                 </div>
-                {actionHints.length > 0 && (actionHints.map(hint => <p key={hint}>{hint}</p>))}
+                {actionHints?.length > 0 && (actionHints.map(hint => <p key={hint}>{hint}</p>))}
                 <SubmitButton
                     defaultLabel="Zaloguj się"
                     pendingLabel="Logowanie…"
