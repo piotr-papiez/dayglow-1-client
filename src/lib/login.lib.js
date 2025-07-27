@@ -20,7 +20,6 @@ export default async function handleSubmit(prevState, formData) {
         return inputHints;
     } else if (response.status === 200) {
         goToPage("/tasks");
-        // redirect("/tasks");
     } else {
         inputHints.push("Wystąpił błąd podczas logowania. Odśwież stronę i spróbuj ponownie.");
         return inputHints;

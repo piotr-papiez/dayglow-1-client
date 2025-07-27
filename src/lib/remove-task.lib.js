@@ -1,17 +1,8 @@
-"use server";
-
-import getTokenCookie from "@/utils/get-token-cookie.util.js";
-
 export default async function removeTask(taskId) {
     try {
-        const tokenValue = await getTokenCookie();
-
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/remove-task`, {
             method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-                "Cookie": `token=${tokenValue}`
-            },
+            headers: { "Content-Type": "application/json" },
             credentials: "include",
             body: JSON.stringify({ taskId })
         });

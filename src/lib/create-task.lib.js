@@ -1,7 +1,5 @@
-"use server";
-
 // import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
+import goToPage from "@/utils/go-to-page-util.js";
 
 import getTokenCookie from "@/utils/get-token-cookie.util.js";
 
@@ -15,11 +13,11 @@ export default async function handleSubmit(prevState, formData) {
 
     const inputHints = [];
 
-    const tokenValue = await getTokenCookie();
+    // const tokenValue = await getTokenCookie();
 
     // if (inputHints.length > 0) return inputHints;
 
-    const response = await createTask(task, tokenValue);
+    const response = await createTask(task/*, tokenValue*/);
 
     if (response.status === 400) {
         inputHints.push("Niewłaściwe dane zadania.");
@@ -32,21 +30,18 @@ export default async function handleSubmit(prevState, formData) {
         return inputHints;
     } else if (response.status === 201) {
         // revalidatePath("/tasks");
-        redirect("/tasks");
+        goToPage("/tasks");
     } else {
         inputHints.push("Wystąpił błąd podczas tworzenia zadania. Odśwież stronę i spróbuj ponownie.");
         return inputHints;
     }
 }
 
-async function createTask(task, tokenValue) {
+async function createTask(task/*, tokenValue*/) {
     try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/create-task`, {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Cookie": `token=${tokenValue}`
-            },
+            headers: { "Content-Type": "application/json" },
             credentials: "include",
             body: JSON.stringify(task)
         });
