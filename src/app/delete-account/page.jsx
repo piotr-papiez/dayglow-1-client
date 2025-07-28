@@ -5,6 +5,7 @@ import { useActionState } from "react";
 import handleSubmit from "@/lib/delete-account.lib.js";
 
 import SubmitButton from "@/components/buttons/submit-button.component.jsx";
+import CancelButton from "@/components/buttons/cancel-button.component.jsx";
 
 export default function DeleteAccount() {
     const [actionHints, formAction] = useActionState(handleSubmit, []);
@@ -24,10 +25,16 @@ export default function DeleteAccount() {
                     />
                 </div>
                 {actionHints.length > 0 && (actionHints.map(hint => <p key={hint}>{hint}</p>))}
-                <SubmitButton
-                    defaultLabel="Usuń bezpowrotnie"
-                    pendingLabel="Usuwanie…"
-                />
+                <div className="related-buttons-container">
+                    <SubmitButton
+                        defaultLabel="Usuń bezpowrotnie"
+                        pendingLabel="Usuwanie…"
+                    />
+                    <CancelButton
+                        defaultLabel="Anuluj"
+                        href="/tasks"
+                    />
+                </div>
             </form>
         </section>
     );

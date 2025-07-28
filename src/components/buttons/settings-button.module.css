@@ -1,6 +1,6 @@
-.logout-button {
+.settings-button {
     display: flex;
-    color: #121212;
+    color: #4e4e4e;
     /* margin-left: auto; */
     border: none;
     background: none;
@@ -8,12 +8,12 @@
     transition: all 0.3s;
 }
 
-.logout-button:hover {
-    color: #ee1848;
+.settings-button:hover {
+    color: #03254c;
 }
 
 /* @media (max-width: 768px) {
-    .logout-button {
+    .settings-button {
         margin-right: 2rem;
     }
 } */

@@ -11,12 +11,13 @@ import removeTask from "@/lib/remove-task.lib.js";
 
 import styles from "./page.module.css";
 
+import SettingsButton from "@/components/buttons/settings-button.component";
 import LogoutButton from "@/components/buttons/logout-button.component.jsx";
 import RemoveButton from "@/components/buttons/remove-task-button.component.jsx";
 
 export default function Tasks() {
     const [tasks, setTasks] = useState([]);
-    const { setName } = useContext(NameContext);
+    const { name, setName } = useContext(NameContext);
 
     useEffect(() => {
         async function fetchTasks() {
@@ -45,11 +46,12 @@ export default function Tasks() {
         if (response) setTasks(prevTasks => prevTasks.filter(task => task._id !== taskId));
     }
 
-    const { name } = useContext(NameContext);
-
     return (
         <>
-            <LogoutButton />
+            <div className={styles["tools-container"]}>
+                <SettingsButton />
+                <LogoutButton />
+            </div>
             <h2 className={styles.heading}>Cześć, {name}!</h2>
             <section className={styles.section}>
                 {tasks.length > 0 && (
