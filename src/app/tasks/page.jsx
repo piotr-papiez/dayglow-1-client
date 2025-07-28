@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import AddIcon from "@mui/icons-material/Add";
 import DoneIcon from "@mui/icons-material/Done";
 
+import { NameContext } from "../../../context/name.context";
 import removeTask from "@/lib/remove-task.lib.js";
 
 import styles from "./page.module.css";
@@ -15,6 +16,7 @@ import RemoveButton from "@/components/buttons/remove-task-button.component.jsx"
 
 export default function Tasks() {
     const [tasks, setTasks] = useState([]);
+    const { setName } = useContext(NameContext);
 
     useEffect(() => {
         async function fetchTasks() {
@@ -25,8 +27,9 @@ export default function Tasks() {
                     credentials: "include"
                 });
 
-                const fetchedTasks = await response.json();
-                setTasks(fetchedTasks);
+                const { tasks, name } = await response.json();
+                setTasks(tasks);
+                setName(name);
             } catch (error) {
                 console.log(error);
             }
@@ -42,10 +45,12 @@ export default function Tasks() {
         if (response) setTasks(prevTasks => prevTasks.filter(task => task._id !== taskId));
     }
 
+    const { name } = useContext(NameContext);
+
     return (
         <>
             <LogoutButton />
-            <h2 className={styles.heading}>Twoja lista zadań</h2>
+            <h2 className={styles.heading}>Cześć, {name}!</h2>
             <section className={styles.section}>
                 {tasks.length > 0 && (
                     tasks.map(task => (

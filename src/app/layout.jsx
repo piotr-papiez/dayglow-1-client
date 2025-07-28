@@ -1,3 +1,5 @@
+import { NameProvider } from "../../context/name.context";
+
 import { IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 
@@ -15,7 +17,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pl" className={IBMPlexSans.className}>
       <body>
-        {children}
+        <NameProvider>
+          {children}
+        </NameProvider>
       </body>
     </html>
   );
