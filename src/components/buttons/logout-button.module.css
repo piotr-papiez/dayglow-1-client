@@ -1,7 +1,6 @@
 .logout-button {
     display: flex;
     color: #121212;
-    /* margin-left: auto; */
     border: none;
     background: none;
     cursor: pointer;
@@ -11,9 +10,3 @@
 .logout-button:hover {
     color: #ee1848;
 }
-
-/* @media (max-width: 768px) {
-    .logout-button {
-        margin-right: 2rem;
-    }
-} */

@@ -10,7 +10,7 @@ export default function SettingsButton() {
     return (
         <button
             className={styles["settings-button"]}
-            onClick={() => {goToPage("/delete-account")}}
+            onClick={() => {goToPage("/settings")}}
         >
             <SettingsIcon />
         </button>
