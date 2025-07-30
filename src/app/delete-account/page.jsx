@@ -32,7 +32,7 @@ export default function DeleteAccount() {
                     />
                     <CancelButton
                         defaultLabel="Anuluj"
-                        href="/tasks"
+                        href="/settings"
                     />
                 </div>
             </form>
